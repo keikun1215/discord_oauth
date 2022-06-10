@@ -7,14 +7,13 @@
   <body>
     Process completing...
     <script>
-      function getParam(url){
+      function getParam(url) {
         let URLparams = url.substr(url.indexOf('?') + 1);
         let params = URLparams.split('&')
         let paramObj = {}
-        for(let paramNV of params){
-          for(let [name, value] of paramNV.split('=')){
-            paramObj[name] = value
-          }
+        for(let paramNV of params) {
+          let [name, value] = paramNV.split('=')
+          paramObj[name] = value
         }
         return paramObj
       }
