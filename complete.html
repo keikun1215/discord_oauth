@@ -25,6 +25,7 @@
       xhr.send()
       let token = JSON.parse(xhr.responseText).access_token
       xhr.open('get','https://discordapp.com/api/users/@me')
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
       xhr.setRequestHeader('Authorization', `Bearer ${token}`)
       xhr.send()
       let user = xhr.responseText
