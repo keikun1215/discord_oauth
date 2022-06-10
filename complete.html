@@ -22,8 +22,13 @@
       let url = `https://discord.com/api/oauth2/authorize?client_id=984723299856678945&client_secret=3tJrdaMBbyMEeoCssDFta8F1Ruhw5cs_&grant_type=authorization_code&code=${code}&redirect_uri=https://keikun1215.github.io/discord_oauth/complete.html`
       let xhr = new XMLHttpRequest()
       xhr.open('get',url)
-      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
       xhr.send()
+      let token = JSON.parse(xhr.responseText).access_token
+      xhr.open('get','https://discordapp.com/api/users/@me')
+      xhr.setRequestHeader('Authorization', `Bearer ${token}`)
+      xhr.send()
+      let user = xhr.responseText
     </script>
   </body>
 </html>
